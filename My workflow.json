@@ -1,0 +1,242 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        -80
+      ],
+      "id": "cc6192bc-9716-4ba7-af9a-afc1309e7c29",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0ac1c90-0eef-482c-9a97-f6977d181689",
+              "name": "job_description",
+              "value": "Full job description Info: As a working student (m/f/d) in the field of Data Science & AI, you will become part of the Data & AI team at FLEX Capital and work on the development and implementation of data-driven solutions for our portfolio companies as well as internal projects. You will not only support the team operationally, but – depending on your experience – also take on your own projects from conception and implementation to deployment. This will give you the opportunity to assume practical responsibility and help shape real-world AI applications in a professional environment.   Your tasks Support for AI projects: Collaboration in the development of machine learning and LLM-based solutions (e.g., RAG systems, chatbots, automations). Own projects: Taking on clearly defined sub-projects or independent use cases – from the idea through prototyping to productive implementation. Agentic & LLM Use Cases: Collaboration in the design and implementation of AI agents and intelligent automations (e.g. in the area of ​​customer support) Machine Learning & Analytics: Support with classic ML tasks, model training, evaluation, exploratory analyses and KPI deep dives. Sparring & exchange: Close collaboration with experienced data scientists and AI engineers – you don't work \"towards\", but \"with\".  Who we are looking for: Currently enrolled in a Bachelor's or Master's program in Physics, Mathematics, Computer Science, Electrical or Information Engineering, Data Science or a comparable field. Initial practical experience in Machine Learning, Data Science or LLMs – e.g. through projects, internships, university work or own experiments. Good programming skills in Python; experience with frameworks such as PyTorch, TensorFlow, scikit-learn, LangChain or Hugging Face is a plus. Basic understanding of databases, data processing and ideally initial experience with cloud environments. Analytical thinking, structured work style, and enjoyment in solving problems pragmatically. A desire to take on responsibility, learn new things and actually implement things – not just create slides. Excellent German and English skills. Benefits Collaboration on real, business-relevant AI topics – not just game projects. Responsibility and creative freedom – including the opportunity to productively implement one's own solutions. Close collaboration with experienced AI and data professionals. An environment where speed, pragmatism, and quality go hand in hand. Flexible working hours to suit your studies.  About Us FLEX Capital is a private equity fund focused on growth and buyout opportunities in the German software and tech mid-market. Behind FLEX Capital are six serial entrepreneurs who have built multiple market-leading companies with international operations. Based on this experience, the FLEX team shares its expertise with entrepreneurs and management teams, providing hands-on support and helping them achieve their shared goals.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -80,
+        -80
+      ],
+      "id": "d58a5391-b16d-4cce-9c1a-4477719f363d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3ddceadd-4427-4873-b75e-dccfa587fc63",
+              "name": "AI Assessment",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "3974b3ab-5552-4503-a078-1709ef1f0c68",
+              "name": "Job Title",
+              "value": "Berliner Bags - Test",
+              "type": "string"
+            },
+            {
+              "id": "323ea3fd-3041-46b6-b6fd-50e367f6a98f",
+              "name": "Date",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": "=",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        368,
+        -80
+      ],
+      "id": "9f18c7be-338f-4035-93fb-22090a4500d3",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1K4dg8sQD45yCwG-m437q94Y-f5glXVxkYVFNpPGB4T4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1K4dg8sQD45yCwG-m437q94Y-f5glXVxkYVFNpPGB4T4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Job Title": "={{ $json['Job Title'] }}",
+            "AI Assessment": "={{ $json['AI Assessment'] }}",
+            "Date": "={{ $json['Date'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Job Title",
+              "displayName": "Job Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "AI Assessment",
+              "displayName": "AI Assessment",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        592,
+        -80
+      ],
+      "id": "1ce5a8ab-a46c-4c36-bb90-c0619397b6dc",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z6oiDlh0K29iq4c7",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: \"openai/gpt-oss-120b\", messages: [{ role: \"user\", content: \"You are a recruiter assistant. Score how well this job fits the candidate from 1-10. Respond in plain text only, no markdown. Format: Score: [number]/10 | Matching: [skills] | Missing: [skills]. Candidate: MS AI student, Python, XGBoost, HuggingFace Transformers, BERT, LangChain, FAISS, RAG pipelines, Streamlit, Groq API, German A2. Job description: \" + $json.job_description }] }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        144,
+        -80
+      ],
+      "id": "6e57f3f9-3c99-4681-a90e-bfd06e18df81",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "1P3IjYMBnB4zRBzW",
+          "name": "Header Auth account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "f1d06573-ab53-4387-88f6-56a498c4fffa",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a2843970e08e64cbd33f7e97c3dd2076a29342337c6b78d2f4d12958650a4d85"
+  },
+  "nodeGroups": [],
+  "id": "BCNRpd81tjCHgHd2",
+  "tags": []
+}
